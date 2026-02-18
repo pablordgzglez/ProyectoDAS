@@ -16,6 +16,7 @@ Including another URLconf
 """
 
 from django.urls import include, path
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 # from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -28,6 +29,7 @@ urlpatterns = [
         name="swagger-ui",
     ),
     path("api/healthcheck/", include("healthcheck.urls")),
-    # path("api/auth/login/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    # path("api/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/auth/login/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/", include("chat.urls")),
 ]
