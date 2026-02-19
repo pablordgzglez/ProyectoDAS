@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "healthcheck",
     "chat",
+    "users",
 ]
 
 MIDDLEWARE = [
