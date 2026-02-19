@@ -13,7 +13,6 @@ from .serializers import ChatSerializer, ChatMessageSerializer, UsageSerializer
 
 
 def add_one_month(d):
-    # d es datetime.date
     year = d.year
     month = d.month + 1
     if month == 13:
@@ -34,18 +33,8 @@ class ChatViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-    @action(detail=True, methods=["post"], url_path="message")
+    
     def send_message(self, request, pk=None):
-        """
-        POST /api/chats/{id}/message/
-        body: { "content": "hola" }
-
-        - valida límite mensual (Usage)
-        - guarda mensaje user
-        - llama al LLM con el historial
-        - guarda respuesta system
-        - incrementa usage
-        """
         chat = self.get_object()
         content = (request.data.get("content") or "").strip()
         if not content:
