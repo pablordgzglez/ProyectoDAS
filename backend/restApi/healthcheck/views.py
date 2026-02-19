@@ -11,4 +11,3 @@ class HealthcheckView(APIView):
     def get(self, request):
         params = [{'role':'user','content':"2+2"}]
         return Response(call_llm(params))
-        #return Response("Greetings from API Chat AI (DAS 2026)")
