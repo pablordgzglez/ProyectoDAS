@@ -17,7 +17,7 @@ class Chat(models.Model):
 
 
 class ChatMessage(models.Model):
-    ROLE_CHOICES = (("system", "system"), ("user", "user"))
+    ROLE_CHOICES = (("system", "system"), ("user", "user"), ("assistant", "assistant"))
 
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name="messages")
     role = models.CharField(max_length=10, choices=ROLE_CHOICES)

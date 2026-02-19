@@ -84,7 +84,7 @@ class ChatViewSet(viewsets.ModelViewSet):
             assistant_reply = call_llm(llm_messages)
 
             # Guardar respuesta del sistema/LLM
-            ChatMessage.objects.create(chat=chat, role="system", content=assistant_reply)
+            ChatMessage.objects.create(chat=chat, role="assistant", content=assistant_reply)
 
             # Incrementar usage (solo por mensaje del usuario)
             usage.messages_used += 1
