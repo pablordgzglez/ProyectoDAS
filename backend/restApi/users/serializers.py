@@ -42,12 +42,12 @@ class RegisterSerializer(serializers.Serializer):
             password=validated_data["password1"],
         )
 
-        # Crear Usage automáticamente
+        
         Usage.objects.get_or_create(
             user=user,
             defaults={
                 "messages_used": 0,
-                "messages_limit": 20,   # ajusta si queréis otro default
+                "messages_limit": 20,  
                 "reset_date": timezone.now().date(),
             },
         )
@@ -59,7 +59,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["username", "email"]
-        read_only_fields = ["username"]  # si quieres permitir cambiar username, quita esto
+        read_only_fields = ["username"] 
 
 
 class ChangePasswordSerializer(serializers.Serializer):
