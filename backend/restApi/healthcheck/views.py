@@ -1,7 +1,7 @@
 from drf_spectacular.utils import extend_schema
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from ai.llm_service import call_llm
 
 class HealthcheckView(APIView):
     @extend_schema(
@@ -9,4 +9,5 @@ class HealthcheckView(APIView):
         responses={200: "API is running"},
     )
     def get(self, request):
-        return Response("Greetings from API Chat AI (DAS 2026)")
+        params = [{'role':'user','content':"2+2"}]
+        return Response(call_llm(params))
