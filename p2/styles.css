@@ -78,3 +78,9 @@ button {
 button:hover {
     background-color: #1f2d3a;
 }
+
+#login-message {
+    margin-bottom: 15px;
+    color: #c0392b;
+    font-size: 14px;
+}
