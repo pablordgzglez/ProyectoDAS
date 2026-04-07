@@ -10,6 +10,7 @@ if (loginForm) {
         const message = document.getElementById("login-message");
 
         message.textContent = "";
+        message.style.color = "red";
 
         try {
             const response = await fetch("http://127.0.0.1:8000/api/auth/login/", {
@@ -39,6 +40,7 @@ if (loginForm) {
             message.style.color = "green";
         } catch (error) {
             message.textContent = "Error al conectar con el servidor.";
+            message.style.color = "red";
         }
     });
 }
@@ -57,6 +59,7 @@ if (registerForm) {
         const message = document.getElementById("register-message");
 
         message.textContent = "";
+        message.style.color = "red";
 
         if (password1 !== password2) {
             message.textContent = "Las contraseñas no coinciden.";
@@ -80,7 +83,17 @@ if (registerForm) {
             const data = await response.json();
 
             if (!response.ok) {
-                message.textContent = "Error en el registro.";
+                if (data.username) {
+                    message.textContent = data.username[0];
+                } else if (data.email) {
+                    message.textContent = data.email[0];
+                } else if (data.password1) {
+                    message.textContent = data.password1[0];
+                } else if (data.password2) {
+                    message.textContent = data.password2[0];
+                } else {
+                    message.textContent = "Error en el registro.";
+                }
                 return;
             }
 
@@ -90,6 +103,7 @@ if (registerForm) {
 
         } catch (error) {
             message.textContent = "Error al conectar con el servidor.";
+            message.style.color = "red";
         }
     });
 }
