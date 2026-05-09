@@ -1,0 +1,160 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: #1f1f1f;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.cardTitle {
+  font-size: 1.35rem;
+  color: #1f1f1f;
+}
+
+.cardText {
+  color: #4a4a4a;
+  line-height: 1.5;
+}
+
+.usageList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.usageItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ececec;
+}
+
+.label {
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.value {
+  color: #4a4a4a;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.input {
+  padding: 0.75rem;
+  border: 1px solid #bcbcbc;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.input:disabled {
+  background-color: #f5f5f5;
+}
+
+.buttonRow {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton {
+  width: fit-content;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.primaryButton {
+  border: none;
+  background-color: #1f1f1f;
+  color: #ffffff;
+}
+
+.secondaryButton {
+  border: 1px solid #1f1f1f;
+  background-color: #ffffff;
+  color: #1f1f1f;
+}
+
+.primaryButton:disabled,
+.secondaryButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #b42318;
+}
+
+.success {
+  color: #18794e;
+}
+
+.stateBox,
+.errorBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.stateBox {
+  background-color: #f5f5f5;
+  color: #4a4a4a;
+}
+
+.errorBox {
+  background-color: #fdecec;
+  color: #b42318;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
