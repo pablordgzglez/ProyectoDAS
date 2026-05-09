@@ -56,10 +56,15 @@ class RegisterSerializer(serializers.Serializer):
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
+    def validate_username(self, value):
+        if User.objects.filter(username=value).exclude(pk=self.instance.pk).exists():
+            raise serializers.ValidationError("Username already exists.")
+        return value
+
     class Meta:
         model = User
         fields = ["username", "email"]
-        read_only_fields = ["username"] 
+        read_only_fields = ["email"] 
 
 
 class ChangePasswordSerializer(serializers.Serializer):
